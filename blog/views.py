@@ -69,6 +69,7 @@ class SearchFormView(FormView):
     form_class =PostSearchForm
     template_name ='blog/post_search.html'
 
+
     def form_valid(self,form):
         searchWord =form.cleaned_data['search_word']
         post_list =Post.objects.filter(Q(title__icontains=searchWord)|Q(description__icontains = searchWord) | Q(content__icontains=searchWord)).distinct()
